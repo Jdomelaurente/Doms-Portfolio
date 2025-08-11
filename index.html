@@ -7,10 +7,8 @@
   <title>Dom's Portfolio</title>
   <link rel="icon" href="image/Page-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -231,61 +229,8 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="js/script.js"></script>
-  <!-- Firebase SDK (modular) -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
-
-  // Your Firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyA1wmw8j4UMfkbJKjUTSmfRZWmJWbl6fP8",
-    authDomain: "my-portfolio-15b3a.firebaseapp.com",
-    projectId: "my-portfolio-15b3a",
-    storageBucket: "my-portfolio-15b3a.appspot.com",
-    messagingSenderId: "680854474032",
-    appId: "1:680854474032:web:82e8542df13f943d254cf5",
-    measurementId: "G-WXLB9RML86"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  // Form handling
-  const form = document.querySelector('.contact-form');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const name = document.querySelector('#name').value.trim();
-    const email = document.querySelector('#email').value.trim();
-    const message = document.querySelector('#message').value.trim();
-
-    if (!name || !message) {
-      alert("Please fill in all required fields.");
-      return;
-    }
-
-    try {
-      await addDoc(collection(db, "messages"), {
-        name,
-        email: email || "(No email provided)",
-        message,
-        timestamp: serverTimestamp()
-      });
-
-      alert("✅ Message sent successfully!");
-      form.reset();
-    } catch (error) {
-      console.error("❌ Error sending message:", error);
-      alert("Failed to send message. Please try again.");
-    }
-  });
-</script>
 
 </body>
 </html>
