@@ -1132,6 +1132,160 @@ header.scrolled {
   font-weight: 900;
 }
 
+/* Comments Section */
+#comments {
+  background-color: var(--bg-color);
+  position: relative;
+  padding: 6rem 0;
+}
+
+.comments-card {
+  background-color: var(--white);
+  border: var(--border-size) solid var(--black);
+  padding: 4rem;
+  box-shadow: 15px 15px 0px var(--black);
+}
+
+.comments-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.comments-header p {
+  margin-top: 1rem;
+  font-weight: 700;
+}
+
+.comment-form {
+  max-width: 600px;
+  margin: 0 auto 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-family: 'Lexend', sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.form-group input,
+.form-group textarea {
+  font-family: 'Space Grotesk', sans-serif;
+  padding: 1rem;
+  border: var(--border-size) solid var(--black);
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: var(--bg-color);
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  box-shadow: 4px 4px 0px var(--black);
+  transform: translate(-2px, -2px);
+}
+
+.submit-btn {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.success-msg {
+  font-family: 'Lexend', sans-serif;
+  font-weight: 800;
+  color: var(--accent-green);
+  font-size: 0.9rem;
+}
+
+.comments-list {
+  border-top: var(--border-size) solid var(--black);
+  padding-top: 2rem;
+}
+
+.comments-list h3 {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.no-comments {
+  text-align: center;
+  padding: 2rem;
+  border: var(--border-size) solid var(--black);
+  background-color: var(--bg-color);
+  font-weight: 700;
+}
+
+.comment-item {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.25rem 0;
+  border-bottom: 2px solid var(--black);
+}
+
+.comment-item:last-child {
+  border-bottom: none;
+}
+
+.comment-avatar {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  background-color: var(--main-color);
+  border: var(--border-size) solid var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lexend', sans-serif;
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+.comment-body {
+  flex: 1;
+}
+
+.comment-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.comment-meta strong {
+  font-family: 'Lexend', sans-serif;
+  font-size: 0.95rem;
+}
+
+.comment-date {
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.comment-body p {
+  font-size: 0.95rem;
+  word-break: break-word;
+}
+
 /* Footer Redesign */
 footer {
   background-color: var(--black);

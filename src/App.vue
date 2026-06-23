@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import { useCollection } from 'vuefire'
-import { collection, doc, getDoc, updateDoc, increment, setDoc } from 'firebase/firestore'
+import { collection, doc, getDoc, updateDoc, increment, setDoc, addDoc, serverTimestamp, orderBy, query } from 'firebase/firestore'
 import { db } from './firebase'
 
 // Firebase Collection for Projects (Optional usage)
@@ -175,6 +175,36 @@ const isLoading = ref(true)
 
 const selectedProject = ref(null)
 const isModalOpen = ref(false)
+
+// Comments
+const commentsQuery = query(collection(db, 'comments'), orderBy('createdAt', 'desc'))
+const comments = useCollection(commentsQuery)
+const commentName = ref('')
+const commentMessage = ref('')
+const isSubmitting = ref(false)
+const submitSuccess = ref(false)
+
+const submitComment = async () => {
+  const name = commentName.value.trim()
+  const message = commentMessage.value.trim()
+  if (!name || !message) return
+  isSubmitting.value = true
+  try {
+    await addDoc(collection(db, 'comments'), {
+      name,
+      message,
+      createdAt: serverTimestamp()
+    })
+    commentName.value = ''
+    commentMessage.value = ''
+    submitSuccess.value = true
+    setTimeout(() => { submitSuccess.value = false }, 3000)
+  } catch (err) {
+    console.error('Error submitting comment:', err)
+  } finally {
+    isSubmitting.value = false
+  }
+}
 
 const openProjectModal = (project) => {
   selectedProject.value = project
@@ -549,6 +579,52 @@ onMounted(async () => {
                   </div>
                </a>
            </div>
+        </div>
+      </div>
+    </section>
+    <!-- Comments Section -->
+    <section id="comments">
+      <div class="container">
+        <div class="section-indicator">05</div>
+        <div class="comments-card">
+          <div class="comments-header" data-aos="fade-down">
+            <h2 class="creative-title">LEAVE A <span>FEEDBACK</span></h2>
+            <p>HELP ME IMPROVE — DROP YOUR THOUGHTS BELOW</p>
+          </div>
+
+          <form class="comment-form" @submit.prevent="submitComment" data-aos="fade-up">
+            <div class="form-group">
+              <label for="commentName">NAME</label>
+              <input id="commentName" v-model="commentName" type="text" placeholder="YOUR NAME" required maxlength="50">
+            </div>
+            <div class="form-group">
+              <label for="commentMessage">MESSAGE</label>
+              <textarea id="commentMessage" v-model="commentMessage" placeholder="YOUR FEEDBACK OR SUGGESTIONS..." required maxlength="500" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn submit-btn" :disabled="isSubmitting">
+              <span v-if="isSubmitting">SENDING...</span>
+              <span v-else>SEND FEEDBACK</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+            <p v-if="submitSuccess" class="success-msg">THANK YOU FOR YOUR FEEDBACK!</p>
+          </form>
+
+          <div class="comments-list" data-aos="fade-up">
+            <h3><i class="fas fa-comments"></i> RECENT FEEDBACK</h3>
+            <div v-if="comments.length === 0" class="no-comments">
+              <p>NO FEEDBACK YET. BE THE FIRST!</p>
+            </div>
+            <div v-for="comment in comments" :key="comment.id" class="comment-item">
+              <div class="comment-avatar">{{ comment.name.charAt(0).toUpperCase() }}</div>
+              <div class="comment-body">
+                <div class="comment-meta">
+                  <strong>{{ comment.name }}</strong>
+                  <span v-if="comment.createdAt" class="comment-date">{{ comment.createdAt.toDate().toLocaleDateString() }}</span>
+                </div>
+                <p>{{ comment.message }}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
