@@ -319,7 +319,7 @@ onMounted(async () => {
           <p class="hero-subtitle">MAPPING CREATIVITY INTO CODE</p>
           <div class="hero-btns">
             <a href="#projects" class="btn">PORTFOLIO</a>
-            <a href="/documents/resume.docx" target="_blank" class="btn btn-secondary"><i class="fas fa-file-download" style="margin-right: 5px;"></i> RESUME</a>
+            <a href="/documents/resume.pdf" target="_blank" class="btn btn-secondary"><i class="fas fa-file-download" style="margin-right: 5px;"></i> RESUME</a>
             <a href="#contact" class="btn btn-secondary">HIRE ME</a>
           </div>
         </div>
