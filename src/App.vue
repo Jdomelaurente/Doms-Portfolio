@@ -176,6 +176,18 @@ const isLoading = ref(true)
 const selectedProject = ref(null)
 const isModalOpen = ref(false)
 
+const isResumeModalOpen = ref(false)
+
+const openResumeModal = () => {
+  isResumeModalOpen.value = true
+  document.body.style.overflow = 'hidden'
+}
+
+const closeResumeModal = () => {
+  isResumeModalOpen.value = false
+  document.body.style.overflow = ''
+}
+
 // Comments
 const commentsQuery = query(collection(db, 'comments'), orderBy('createdAt', 'desc'))
 const comments = useCollection(commentsQuery)
@@ -319,7 +331,7 @@ onMounted(async () => {
           <p class="hero-subtitle">MAPPING CREATIVITY INTO CODE</p>
           <div class="hero-btns">
             <a href="#projects" class="btn">PORTFOLIO</a>
-            <a href="/documents/resume.pdf" target="_blank" class="btn btn-secondary"><i class="fas fa-file-download" style="margin-right: 5px;"></i> RESUME</a>
+            <button @click="openResumeModal" class="btn btn-secondary"><i class="fas fa-file-download" style="margin-right: 5px;"></i> RESUME</button>
             <a href="#contact" class="btn btn-secondary">HIRE ME</a>
           </div>
         </div>
@@ -651,6 +663,39 @@ onMounted(async () => {
       </div>
     </div>
   </footer>
+
+  <!-- Resume Modal -->
+  <div v-if="isResumeModalOpen" class="project-modal-overlay" @click.self="closeResumeModal">
+    <div class="project-modal-content" style="max-width: 900px;">
+      <button class="modal-close-btn" @click="closeResumeModal" aria-label="Close modal">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="modal-header">
+        <span class="modal-category">DOCUMENT</span>
+        <h2 class="modal-title">RESUME</h2>
+        <p class="modal-subtitle">JUNE DOMINIC G. LAURENTE</p>
+      </div>
+
+      <div class="modal-body" style="padding: 0;">
+        <div style="width: 100%; height: 70vh; border: 3px solid var(--black);">
+          <iframe src="/documents/resume.pdf" style="width: 100%; height: 100%; border: none;" title="Resume"></iframe>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="justify-content: center;">
+        <a href="/documents/resume.pdf" download class="btn modal-btn">
+          <span>DOWNLOAD PDF</span>
+          <i class="fas fa-download"></i>
+        </a>
+        <a href="/documents/resume.docx" download class="btn btn-secondary modal-btn">
+          <span>DOWNLOAD DOCX</span>
+          <i class="fas fa-file-word"></i>
+        </a>
+        <button class="btn btn-secondary modal-btn" @click="closeResumeModal">CLOSE</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Project Details Modal -->
   <div v-if="isModalOpen && selectedProject" class="project-modal-overlay" @click.self="closeProjectModal">
