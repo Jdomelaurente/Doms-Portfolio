@@ -174,6 +174,7 @@ img {
 section {
   padding: 6rem 0;
   border-bottom: var(--border-size) solid var(--black);
+  position: relative;
 }
 
 /* Header Redesign */
@@ -481,7 +482,7 @@ header.scrolled {
 }
 
 .section-indicator.light {
-  color: rgba(255,255,255,0.1);
+  color: #808080;
 }
 
 .creative-title {
@@ -498,6 +499,13 @@ header.scrolled {
   padding: 0 0.5rem;
   transform: rotate(-2deg);
   display: inline-block;
+}
+
+.creative-title .section-number {
+  background-color: #808080;
+  color: var(--white);
+  margin-right: 0.6rem;
+  transform: none;
 }
 
 .creative-title.light {
@@ -626,6 +634,8 @@ header.scrolled {
 .project-header {
   margin-bottom: 5rem;
   text-align: center;
+  position: relative;
+  padding-top: 4rem;
 }
 
 /* Identity Card styling */
@@ -795,6 +805,24 @@ header.scrolled {
   border: 3px solid var(--black);
   z-index: 5;
   font-size: 0.8rem;
+}
+
+.tile-badge-school {
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  background-color: var(--main-color);
+  color: var(--black);
+  padding: 0.3rem 1rem;
+  font-weight: 900;
+  border: 3px solid var(--black);
+  z-index: 5;
+  font-size: 0.8rem;
+}
+
+.tile-badge-school.commission {
+  background-color: var(--accent-green);
+  color: var(--white);
 }
 
 .tile-img-container {
@@ -1068,6 +1096,7 @@ header.scrolled {
 .contact-block.fb:hover { background-color: #1877f2; color: white; }
 .contact-block.mail:hover { background-color: var(--accent-pink); color: white; }
 .contact-block.ig:hover { background-color: #e4405f; color: white; }
+.contact-block.linkedin:hover { background-color: #0077b5; color: white; }
 
 .block-info span {
   display: block;
@@ -1382,5 +1411,419 @@ footer {
 
   .preloader-content .loader-text {
      font-size: 1rem;
+  }
+}
+
+/* Experience Section Styles */
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  margin-top: 4rem;
+}
+
+.experience-card {
+  background-color: var(--white);
+  color: var(--black);
+  border: var(--border-size) solid var(--black);
+  box-shadow: 8px 8px 0px var(--black);
+  padding: 2.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+
+.experience-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0px var(--accent-pink);
+}
+
+.experience-badge {
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  background-color: var(--accent-blue);
+  color: var(--white);
+  padding: 0.4rem 1rem;
+  font-weight: 900;
+  border: 3px solid var(--black);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.experience-badge.commission {
+  background-color: var(--accent-green);
+}
+
+.experience-year {
+  font-weight: 900;
+  font-size: 0.85rem;
+  background-color: var(--black);
+  color: var(--white);
+  padding: 0.2rem 0.6rem;
+  width: fit-content;
+  margin-bottom: 1rem;
+}
+
+.experience-role {
+  font-weight: 800;
+  color: var(--accent-pink);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.experience-desc {
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.experience-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: auto;
+}
+
+.experience-tech span {
+  font-weight: 800;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.8rem;
+  background-color: var(--main-color);
+  border: 2px solid var(--black);
+  box-shadow: 3px 3px 0px var(--black);
+}
+
+@media (max-width: 768px) {
+  .experience-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}
+
+.subsection-title-creative {
+  font-size: 1.8rem;
+  background-color: var(--black);
+  color: var(--white);
+  padding: 0.5rem 1.5rem;
+  width: fit-content;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  border: var(--border-size) solid var(--black);
+  box-shadow: 4px 4px 0px var(--accent-pink);
+  transform: rotate(-1deg);
+}
+
+.section-divider-brutal {
+  border-top: var(--border-size) dashed var(--black);
+  margin: 5rem 0 3rem;
+}
+
+/* Project Details Modal Styles */
+.project-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.project-modal-content {
+  background-color: var(--bg-color);
+  border: var(--border-size) solid var(--black);
+  box-shadow: 12px 12px 0px var(--black);
+  width: 100%;
+  max-width: 850px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: modal-zoom-in 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modal-zoom-in {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background-color: var(--accent-pink);
+  color: var(--white);
+  border: var(--border-size) solid var(--black);
+  box-shadow: 4px 4px 0px var(--black);
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: var(--transition);
+}
+
+.modal-close-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--black);
+  background-color: var(--black);
+  color: var(--accent-pink);
+}
+
+.modal-header {
+  border-bottom: var(--border-size) dashed var(--black);
+  padding-bottom: 1.5rem;
+  margin-top: 1rem;
+}
+
+.modal-badge-school {
+  display: inline-block;
+  background-color: var(--main-color);
+  color: var(--black);
+  padding: 0.3rem 0.8rem;
+  font-weight: 900;
+  border: 2px solid var(--black);
+  font-size: 0.75rem;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  vertical-align: middle;
+}
+
+.modal-badge-school.commission {
+  background-color: var(--accent-green);
+  color: var(--white);
+}
+
+.modal-category {
+  display: inline-block;
+  background-color: var(--accent-blue);
+  color: var(--white);
+  padding: 0.3rem 0.8rem;
+  font-weight: 900;
+  border: 2px solid var(--black);
+  font-size: 0.75rem;
+  margin-bottom: 10px;
+  vertical-align: middle;
+}
+
+.modal-title {
+  font-size: 2.2rem;
+  line-height: 1.1;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--black);
+}
+
+.modal-subtitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #555;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.modal-img-container {
+  width: 100%;
+  border: var(--border-size) solid var(--black);
+  box-shadow: 8px 8px 0px var(--black);
+  overflow: hidden;
+  height: 350px;
+  background-color: #eee;
+  position: relative;
+}
+
+.certificate-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background-color: var(--accent-pink);
+  color: var(--white);
+  border: 3px solid var(--black);
+  padding: 0.25rem 0.8rem;
+  font-family: 'Lexend', sans-serif;
+  font-weight: 900;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  z-index: 2;
+}
+
+.modal-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+}
+
+.modal-tech-stack h4 {
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: #666;
+  margin-bottom: 0.8rem;
+}
+
+.modal-section {
+  border-top: 2px dashed var(--black);
+  padding-top: 1.5rem;
+}
+
+.certificate-section {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.modal-section h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--black);
+}
+
+.modal-section h3 i {
+  color: var(--accent-pink);
+}
+
+.modal-section p {
+  font-size: 1.05rem;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* Architecture Grid */
+.arch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.arch-card {
+  background-color: var(--white);
+  border: var(--border-size) solid var(--black);
+  box-shadow: 6px 6px 0px var(--black);
+  padding: 1.2rem;
+  transition: var(--transition);
+}
+
+.arch-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0px var(--accent-green);
+}
+
+.arch-card.hw:hover { box-shadow: 9px 9px 0px var(--accent-pink); }
+.arch-card.backend:hover { box-shadow: 9px 9px 0px var(--accent-blue); }
+
+.arch-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0.8rem;
+  border-bottom: 2px solid var(--black);
+  padding-bottom: 0.5rem;
+}
+
+.arch-card-header i {
+  font-size: 1.2rem;
+  color: var(--accent-pink);
+}
+
+.arch-card-header h4 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.arch-card p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #333;
+}
+
+/* Enhancements List */
+.enhancements-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.enhancements-list li {
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.4;
+}
+
+.enhancements-list li i {
+  color: var(--accent-green);
+  margin-top: 4px;
+}
+
+.modal-footer {
+  border-top: var(--border-size) dashed var(--black);
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.modal-btn {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .project-modal-content {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .modal-title {
+    font-size: 1.8rem;
+  }
+  
+  .modal-img-container {
+    height: 220px;
+  }
+  
+  .arch-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .modal-footer {
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .modal-footer .btn {
+    width: 100%;
+    text-align: center;
   }
 }

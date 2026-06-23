@@ -14,43 +14,118 @@ const unifiedWorks = [
     type: 'WEB',
     category: 'WEB SYSTEM',
     title: 'Kalinga Coffee Shop',
-    description: 'A web-based Point of Sale (POS) and administrative management system for coffee shop operations, featuring interactive menu grids, live carts, detailed audit logs, and customizable frontend security and admin privileges.',
+    description: 'A comprehensive PHP/MySQL management system featuring role-based dashboards (user, admin, superadmin), a dynamic POS interface with receipt printing, multi-step registration, security controls (temporary lockout & PHPMailer email verification), and auditable activity logging.',
     image: '/image/Projects/coffee_shop.png',
     tech: ['PHP', 'MySQL', 'Vanilla JS'],
-    links: { demo: 'https://kalinga-coffee-shop.lovestoblog.com/', code: '#' }
+    links: { demo: 'https://kalinga-coffee-shop.lovestoblog.com/', code: '#' },
+    isSchoolProject: true
   },
   {
     id: 2,
     type: 'WEB',
     category: 'E-COMMERCE',
-    title: 'Flower Shop System',
-    description: 'An online flower shop website with product catalog, add-to-cart feature, and GCash integration through Paymongo.',
+    title: 'Maison des Fleurs',
+    description: 'A Flask-based commissioned flower shop system for Father Saturnino Urios University featuring authentication, product browsing, session-based cart flow, checkout, and admin management tools.',
     image: '/image/Projects/e-commerce.png',
-    tech: ['PHP', 'Paymongo', 'Tailwind CSS'],
-    links: { demo: 'https://flowershop-maison-des-fleurs.onrender.com/', code: '#' }
+    tech: ['Flask', 'SQLite', 'SQLAlchemy', 'Flask-Login', 'Bootstrap'],
+    links: { demo: 'https://flowershop-maison-des-fleurs.onrender.com/', code: '#' },
+    isSchoolProject: false,
+    badge: 'COMMISSION',
+    details: {
+      subtitle: 'Commissioned Flower Shop Application',
+      projectImage: '/image/Projects/e-commerce.png',
+      certificateImage: '/image/Projects/mason_de_flora.jpg',
+      overview: 'Maison des Fleurs is a Flask-based flower shop application commissioned for a student of Father Saturnino Urios University, Butuan City. It includes authentication, a customer storefront, session-based cart and purchase flow, and admin management tools for products, orders, and users. The project was built as a real commission and recognized as a first-place output in their school context.',
+      architecture: {
+        hardware: 'Not hardware-based; the system runs as a browser-based web application for customers and administrators.',
+        backend: 'Built with Flask, SQLite, SQLAlchemy, Flask-Migrate, and Flask-Login. It manages authentication, product data, carts, orders, uploads, and admin workflows, with production deployment support through Gunicorn and environment-based secret keys.',
+        frontend: 'Uses Bootstrap and custom CSS for a clean storefront, user dashboards, admin pages, cart views, checkout screens, and responsive product browsing.'
+      },
+      enhancements: [
+        'Customer Support: Add a help or chatbot layer for order questions, payment guidance, and shipping concerns.',
+        'Order Notifications: Send email or SMS updates for cart checkout, payment status, and order completion.',
+        'Production Hardening: Replace the first-run admin defaults with secure setup flows and stronger deployment safeguards.'
+      ]
+    }
   },
   {
     id: 3,
     type: 'WEB',
-    category: 'WEB SYSTEM',
-    title: 'COMLAB Inventory System',
-    description: 'A school-based web application for managing computer laboratory inventory, including real-time borrowing, returning, and tracking of assets.',
-    image: '/image/Projects/inventory.png',
-    tech: ['PHP', 'MySQL', 'Bootstrap'],
-    links: { demo: '#', code: '#' }
+    category: 'IoT / WEB SYSTEM',
+    title: 'Cage Guard',
+    description: 'An automated, low-cost IoT security monitoring system designed for poultry enclosures featuring "Slew-to-Cue" surveillance, automatically panning a camera to face active motion zones, and saving captures in real time.',
+    image: '/image/Projects/cage_guard.png',
+    tech: ['ESP32', 'Django REST', 'Vue.js', 'OpenCV', 'SQLite'],
+    links: { demo: '#', code: '#' },
+    isSchoolProject: true,
+    details: {
+      subtitle: 'A Low-Cost Smart Chicken Cage Monitoring System',
+      overview: 'Cage Guard is an automated, internet-of-things (IoT) security monitoring system designed specifically for poultry enclosures, farm monitoring, and perimeter security. By combining low-cost microcontroller hardware with a powerful backend server and a modern web interface, Cage Guard provides real-time "Slew-to-Cue" surveillance—automatically panning a camera to face a zone immediately when motion is detected, capturing visual evidence, and updating a web dashboard in real time.',
+      architecture: {
+        hardware: 'The core firmware runs on an ESP32 DevKit board and uses four PIR motion sensors to divide the environment into four key zones (LEFT at 0°, FRONT at 90°, RIGHT at 180°, BACK at 270°). When motion is detected, the ESP32 calculates the corresponding angle for the SG90 Servo motor to pan the camera, waits 400ms, sends an HTTP POST JSON payload to the Django server, and implements a 5-second cooldown.',
+        backend: 'The backend manages communication, database persistence, and camera control. Upon receiving an alert at /api/devices/logs/, it stores a log record and spawns an OpenCV capture thread. OpenCV warms up the webcam, auto-flips the frame 180° for upside-down mounts, encodes the image as a JPEG, and saves it to the media directory.',
+        frontend: 'A responsive web application styled with a premium deep forest green scheme (#003d15). It includes an interactive Radar screen highlighting active zones with alert sounds, a Media Vault showing captured alert images with lightbox view, and a real-time Activity Log with pagination.'
+      },
+      enhancements: [
+        'AI Face & Object Detection: Integrate YOLO or OpenCV Haar Cascades to analyze captured security photos and distinguish poultry, caretakers, and predators.',
+        'Push Notifications: Integrate Firebase Cloud Messaging (FCM) or Telegram Bot API for instant mobile alerts.',
+        'Night Vision Support: Switch to infrared (IR) night-vision capable camera module for 24/7 dark farm monitoring.'
+      ]
+    }
   },
   {
     id: 4,
     type: 'WEB',
-    category: 'PYTHON APP',
-    title: 'Python Rich POS System',
-    description: 'A terminal-based point-of-sale system using Python and Rich library for interactive UI, including receipt generation and daily sales.',
-    image: '/image/Projects/rich.png',
-    tech: ['Python', 'SQLAlchemy', 'JSON'],
-    links: { demo: '#', code: '#' }
+    category: 'WEB SYSTEM',
+    title: 'Lab Inventory System',
+    description: 'A modern QR-based laboratory inventory system to track, borrow, and return equipment, samples, and reagents. Features dynamic QR code generation and auto-notifications.',
+    image: '/image/Projects/inventory.png',
+    tech: ['PHP', 'MySQL', 'Node.js', 'Nodemailer', 'Bootstrap 5'],
+    links: { demo: '#', code: '#' },
+    isSchoolProject: true,
+    details: {
+      subtitle: 'QR-Based Laboratory Inventory Management System',
+      overview: 'A modern, responsive web application for laboratories to track, borrow, and return equipment, samples, and reagents using QR codes. It features a dashboard for key statistics, dynamic item entry with QR code generation, seamless scanning modules, automated notifications, and an admin panel.',
+      architecture: {
+        hardware: 'Uses standard client devices (PCs, laptops, tablets) equipped with standard cameras/webcams or dedicated scanners to capture generated QR codes for item tracking.',
+        backend: 'Powered by PHP (PDO connection) compatible with local environments or production databases. Integrates a Node.js-based Nodemailer daemon to dispatch automated HTML email alerts on borrow/return events.',
+        frontend: 'Built using HTML5, Bootstrap 5, SweetAlert2, and Vanilla JavaScript, styled with clean, dark-themed dashboard elements and modern Google Fonts (Inter & Outfit).'
+      },
+      enhancements: [
+        'Dashboard: A sleek, dark-themed statistics panel showing item statuses and borrow metrics.',
+        'Automated Email Alerts: SMTP-based alerts configured inside Nodemailer script for email delivery.',
+        'Admin Controls: Inventory details modification, administrator credentials config, and QR code printing.'
+      ]
+    }
   },
   {
     id: 5,
+    type: 'WEB',
+    category: 'DOCUMENT SYSTEM',
+    title: 'La Union Senior High School Document Request Management System',
+    description: 'A document request management system for La Union Senior High School where students can submit and track document requests online, while staff and administrators handle processing, pickup scheduling, and document digitization.',
+    image: '/image/Projects/launion.png',
+    tech: ['Vue 3', 'Django 5.2', 'DRF', 'PostgreSQL', 'Tailwind CSS', 'Supabase', 'Render', 'Vercel'],
+    links: { demo: 'https://mars-launion.vercel.app/', code: '#' },
+    isSchoolProject: false,
+    badge: 'COMMISSION',
+    details: {
+      subtitle: 'A Commissioned Document Request Management System',
+      overview: 'A full-stack document request platform for La Union Senior High School. Students can submit and monitor requests using a unique passkey, while staff and administrators process documents, manage pickup slots, digitize records, and maintain audit visibility across the system.',
+      architecture: {
+        hardware: 'Not hardware-based; the system is designed as a web application accessible to students, staff, and administrators through desktop and mobile browsers.',
+        backend: 'Built with Django 5.2 and Django REST Framework, secured with SimpleJWT and deployed with Gunicorn. It exposes public request submission endpoints, authenticated staff/admin routes, bulk status updates, audit logging, email notifications, and pickup slot management backed by PostgreSQL on Supabase.',
+        frontend: 'Built with Vue 3 Composition API, Vite, Vue Router 5, Pinia, Tailwind CSS v4, Chart.js, and Axios. The interface supports public submission, passkey tracking, dashboard analytics, student directory management, and document upload workflows.'
+      },
+      enhancements: [
+        'AI Chatbot Support: Add a chatbot that answers common request questions and helps students find the right document process.',
+        'Customer Service Console: Let staff handle live inquiries, follow-ups, and request concerns from one support dashboard.',
+        'Smart Help Center: Build an FAQ and guided assistant for pickup schedules, requirements, and request tracking.'
+      ]
+    }
+  },
+  {
+    id: 6,
     type: 'LOGO',
     category: 'LOGO DESIGN',
     title: 'Nong Doms Identity',
@@ -67,7 +142,7 @@ const certificates = [
     title: 'Java Programming Essentials',
     issuer: 'CARAGA STATE UNIVERSITY - CBR',
     image: '/image/Certificates/JAVA PROGRAMMING ESSENTIALS - CSU - CBR (1)-16(isigned)_signed.png',
-    date: '2024'
+    date: '2025'
   },
   {
     id: 2,
@@ -82,6 +157,13 @@ const certificates = [
     issuer: 'UDEMY',
     image: '/image/Certificates/Udemy.png',
     date: '2025'
+  },
+  {
+    id: 4,
+    title: 'Online Career Starter Workshop',
+    issuer: 'Codec',
+    image: '/image/Certificates/Codec.png',
+    date: '2026'
   }
 ]
 
@@ -91,10 +173,20 @@ const isScrolled = ref(false)
 const visitorCount = ref(0)
 const isLoading = ref(true)
 
-const filteredWorks = computed(() => {
-  if (activeFilter.value === 'ALL') return unifiedWorks
-  return unifiedWorks.filter(work => work.type === activeFilter.value)
-})
+const selectedProject = ref(null)
+const isModalOpen = ref(false)
+
+const openProjectModal = (project) => {
+  selectedProject.value = project
+  isModalOpen.value = true
+  document.body.style.overflow = 'hidden' // prevent scrolling
+}
+
+const closeProjectModal = () => {
+  isModalOpen.value = false
+  selectedProject.value = null
+  document.body.style.overflow = ''
+}
 
 const toggleNav = () => {
   isNavActive.value = !isNavActive.value
@@ -103,6 +195,11 @@ const toggleNav = () => {
 const closeNav = () => {
   isNavActive.value = false
 }
+
+const filteredWorks = computed(() => {
+  if (activeFilter.value === 'ALL') return unifiedWorks
+  return unifiedWorks.filter(work => work.type === activeFilter.value)
+})
 
 onMounted(async () => {
   // Visitor Counter Logic
@@ -139,10 +236,6 @@ onMounted(async () => {
     isLoading.value = false
   }, 1500)
 })
-
-const launchArcade = () => {
-  window.open('/arcade/index.html', '_blank', 'width=800,height=600,noopener,noreferrer')
-}
 </script>
 
 <template>
@@ -169,7 +262,7 @@ const launchArcade = () => {
           <li><a href="#home" @click="closeNav">Home</a></li>
           <li><a href="#about" @click="closeNav">About</a></li>
           <li><a href="#projects" @click="closeNav">Projects</a></li>
-          <li><a href="#certificates" @click="closeNav">Certificates</a></li>
+          <li><a href="#experience" @click="closeNav">Certificates</a></li>
           <li><a href="#contact" @click="closeNav">Contact</a></li>
         </ul>
       </nav>
@@ -196,6 +289,7 @@ const launchArcade = () => {
           <p class="hero-subtitle">MAPPING CREATIVITY INTO CODE</p>
           <div class="hero-btns">
             <a href="#projects" class="btn">PORTFOLIO</a>
+            <a href="/resume.pdf" target="_blank" class="btn btn-secondary"><i class="fas fa-file-download" style="margin-right: 5px;"></i> RESUME</a>
             <a href="#contact" class="btn btn-secondary">HIRE ME</a>
           </div>
         </div>
@@ -347,15 +441,19 @@ const launchArcade = () => {
                 <h3>DEVELOPER IS BUSY</h3>
                 <p>I'm currently working on other big things, but hopefully this year I can make a wonderful game for you. I hope you will like it! :)</p>
                 <div class="coming-soon-tag">COMING SOON</div>
-                <div style="margin-top: 2rem;">
-                   <button @click="launchArcade" class="btn">LAUNCH ARCADE TEST</button>
-                </div>
              </div>
           </div>
 
           <div v-for="(work, index) in filteredWorks" :key="work.id" 
                class="project-tile" 
                data-aos="fade-up">
+            <div
+              v-if="work.isSchoolProject || work.badge"
+              class="tile-badge-school"
+              :class="{ commission: work.badge === 'COMMISSION' }"
+            >
+              {{ work.badge || 'SCHOOL PROJECT' }}
+            </div>
             <div class="tile-category">{{ work.category }}</div>
             <div class="tile-img-container">
               <img :src="work.image" :alt="work.title">
@@ -367,25 +465,29 @@ const launchArcade = () => {
               <div class="tile-tags">
                 <span v-for="tech in work.tech" :key="tech">{{ tech }}</span>
               </div>
-              <div class="tile-footer">
-                <a :href="work.links.demo" class="tile-button" target="_blank">
-                   <span>PREVIEW</span>
-                   <i class="fas fa-external-link-alt"></i>
-                </a>
-              </div>
+            </div>
+            <div class="tile-footer" style="display: flex; border-top: var(--border-size) solid var(--black); width: 100%;">
+              <button @click="openProjectModal(work)" class="tile-button" style="flex: 1; border: none;">
+                 <span>DETAILS</span>
+                 <i class="fas fa-info-circle"></i>
+              </button>
+              <a v-if="work.links.demo && work.links.demo !== '#'" :href="work.links.demo" class="tile-button" target="_blank" style="flex: 1; border-left: var(--border-size) solid var(--black); text-align: center;">
+                 <span>PREVIEW</span>
+                 <i class="fas fa-external-link-alt"></i>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Certificates Section -->
-    <section id="certificates">
+    <!-- Experience & Credentials Section -->
+    <section id="experience">
       <div class="container">
-        <div class="section-indicator">03</div>
+        <div class="section-indicator light">03</div>
         <div class="project-header">
-           <h2 class="creative-title">PROVEN <br> <span>EXPERTISE</span></h2>
-           <p class="section-tagline">CERTIFICATES & ACHIEVEMENTS</p>
+           <h2 class="creative-title"><span>CERTIFICATES</span></h2>
+           <p class="section-tagline">OFFICIAL CREDENTIALS & CERTIFICATIONS</p>
         </div>
 
         <div class="certificates-grid">
@@ -424,27 +526,28 @@ const launchArcade = () => {
                     <p>@jdomelaurente</p>
                  </div>
               </a>
-              <a href="tel:09272308675" class="contact-block mail" data-aos="flip-up" data-aos-delay="100">
-                 <i class="fas fa-phone-alt"></i>
-                 <div class="block-info">
-                    <span>PHONE</span>
-                    <p>09272308675</p>
-                 </div>
-              </a>
-              <a href="https://www.instagram.com/laurentejunedominic" target="_blank" class="contact-block ig" data-aos="flip-up" data-aos-delay="200">
-                 <i class="fab fa-instagram"></i>
-                 <div class="block-info">
-                    <span>INSTAGRAM</span>
-                    <p>Visual Journal</p>
-                 </div>
-              </a>
-              <a href="mailto:jdomelaurente@gmail.com" class="contact-block mail" data-aos="flip-up" data-aos-delay="300">
-                 <i class="fas fa-envelope"></i>
-                 <div class="block-info">
-                    <span>EMAIL</span>
-                    <p>jdomelaurente@gmail.com</p>
-                 </div>
-              </a>
+
+               <a href="https://github.com/Jdomelaurente" target="_blank" class="contact-block github" data-aos="flip-up" data-aos-delay="200">
+                  <i class="fab fa-github"></i>
+                  <div class="block-info">
+                     <span>GITHUB</span>
+                     <p>@Jdomelaurente</p>
+                  </div>
+               </a>
+              <a href="https://www.linkedin.com/in/jdomelaurente" target="_blank" class="contact-block linkedin" data-aos="flip-up" data-aos-delay="250">
+                  <i class="fab fa-linkedin"></i>
+                  <div class="block-info">
+                     <span>LINKEDIN</span>
+                     <p>June Dominic Laurente</p>
+                  </div>
+               </a>
+               <a href="mailto:jdomelaurente@gmail.com" class="contact-block mail" data-aos="flip-up" data-aos-delay="300">
+                  <i class="fas fa-envelope"></i>
+                  <div class="block-info">
+                     <span>EMAIL</span>
+                     <p>jdomelaurente@gmail.com</p>
+                  </div>
+               </a>
            </div>
         </div>
       </div>
@@ -459,7 +562,7 @@ const launchArcade = () => {
            <a href="#home">HOME</a>
            <a href="#about">ABOUT</a>
            <a href="#projects">PROJECTS</a>
-           <a href="#certificates">CERTIFICATES</a>
+           <a href="#experience">CERTIFICATES</a>
            <a href="#contact">CONTACT</a>
          </nav>
       </div>
@@ -472,6 +575,112 @@ const launchArcade = () => {
       </div>
     </div>
   </footer>
+
+  <!-- Project Details Modal -->
+  <div v-if="isModalOpen && selectedProject" class="project-modal-overlay" @click.self="closeProjectModal">
+    <div class="project-modal-content">
+      <button class="modal-close-btn" @click="closeProjectModal" aria-label="Close modal">
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <div class="modal-header">
+        <span
+          class="modal-badge-school"
+          v-if="selectedProject.isSchoolProject || selectedProject.badge"
+          :class="{ commission: selectedProject.badge === 'COMMISSION' }"
+        >
+          {{ selectedProject.badge || 'SCHOOL PROJECT' }}
+        </span>
+        <span class="modal-category">{{ selectedProject.category }}</span>
+        <h2 class="modal-title">{{ selectedProject.title }}</h2>
+        <p class="modal-subtitle" v-if="selectedProject.details && selectedProject.details.subtitle">
+          {{ selectedProject.details.subtitle }}
+        </p>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-img-container">
+          <img :src="selectedProject.details?.projectImage || selectedProject.image" :alt="selectedProject.title" class="modal-hero-img">
+        </div>
+
+        <div class="modal-section certificate-section" v-if="selectedProject.details && selectedProject.details.certificateImage">
+          <h3><i class="fas fa-certificate"></i> Certificate</h3>
+        </div>
+
+        <div class="modal-img-container" v-if="selectedProject.details && selectedProject.details.certificateImage">
+          <div class="certificate-badge">CERTIFICATE</div>
+          <img :src="selectedProject.details.certificateImage" :alt="`${selectedProject.title} certificate`" class="modal-hero-img">
+        </div>
+
+        <div class="modal-tech-stack">
+          <h4>TECH STACK</h4>
+          <div class="tech-tags">
+            <span v-for="tech in selectedProject.tech" :key="tech">{{ tech }}</span>
+          </div>
+        </div>
+
+        <div class="modal-section" v-if="selectedProject.details">
+          <h3><i class="fas fa-eye"></i> System Overview</h3>
+          <p>{{ selectedProject.details.overview }}</p>
+        </div>
+        <div class="modal-section" v-else>
+          <h3><i class="fas fa-eye"></i> Overview</h3>
+          <p>{{ selectedProject.description }}</p>
+        </div>
+
+        <div class="modal-section" v-if="selectedProject.details && selectedProject.details.architecture">
+          <h3><i class="fas fa-cogs"></i> System Architecture & Components</h3>
+          
+          <div class="arch-grid">
+            <div class="arch-card hw">
+              <div class="arch-card-header">
+                <i class="fas fa-microchip"></i>
+                <h4>1. Hardware Layer</h4>
+              </div>
+              <p>{{ selectedProject.details.architecture.hardware }}</p>
+            </div>
+
+            <div class="arch-card backend">
+              <div class="arch-card-header">
+                <i class="fas fa-server"></i>
+                <h4>2. Backend Layer</h4>
+              </div>
+              <p>{{ selectedProject.details.architecture.backend }}</p>
+            </div>
+
+            <div class="arch-card frontend">
+              <div class="arch-card-header">
+                <i class="fas fa-laptop-code"></i>
+                <h4>3. Frontend Layer</h4>
+              </div>
+              <p>{{ selectedProject.details.architecture.frontend }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-section" v-if="selectedProject.details && selectedProject.details.enhancements">
+          <h3><i class="fas fa-rocket"></i> Future Enhancements</h3>
+          <ul class="enhancements-list">
+            <li v-for="(item, idx) in selectedProject.details.enhancements" :key="idx">
+              <i class="fas fa-chevron-right"></i> {{ item }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <a v-if="selectedProject.links.demo && selectedProject.links.demo !== '#'" :href="selectedProject.links.demo" target="_blank" class="btn modal-btn">
+          <span>LIVE PREVIEW</span>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a v-if="selectedProject.links.code && selectedProject.links.code !== '#'" :href="selectedProject.links.code" target="_blank" class="btn btn-secondary modal-btn">
+          <span>VIEW CODE</span>
+          <i class="fab fa-github"></i>
+        </a>
+        <button class="btn btn-secondary modal-btn" @click="closeProjectModal">CLOSE</button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style>
