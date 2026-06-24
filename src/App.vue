@@ -133,6 +133,32 @@ const unifiedWorks = [
     image: '/image/Logos/Nongdoms.png',
     tech: ['Adobe Illustrator', 'Logo Design'],
     links: { demo: '/image/Logos/Nongdoms.png', code: '#' }
+  },
+  {
+    id: 7,
+    type: 'WEB',
+    category: 'WEB SYSTEM',
+    title: 'Flight Booking Simulation Platform',
+    description: 'A comprehensive smart flight booking simulation platform for CTHM-CSUCC featuring flight search with multi-step booking wizard, interactive seat maps, add-on selection, PDF itinerary and QR-coded boarding pass generation, DCS check-in simulation, ML-powered dynamic pricing, student and instructor portals, and an admin panel.',
+    image: '/image/Projects/fbs.png',
+    tech: ['Django 6.0', 'DRF', 'Vue 3', 'PostgreSQL', 'XGBoost', 'Tailwind CSS', 'PayMongo', 'Djoser', 'ReportLab'],
+    links: { demo: 'https://flight-booking-django.vercel.app/', code: '#' },
+    isSchoolProject: true,
+    details: {
+      subtitle: 'A Capstone Flight Booking Simulation Platform for CTHM-CSUCC',
+      overview: 'Flight Booking Simulation Platform (FBS) is a comprehensive smart flight booking simulation platform designed for CTHM-CSUCC (College of Tourism and Hospitality Management). This interactive training tool simulates a real-world airline booking system where students search flights, book tickets, select seats, and check in — all as part of graded academic activities. The platform features a multi-step booking wizard (Search → Passengers → Add-ons → Seats → Review → Payment), interactive seat maps with real-time availability, add-on selection (insurance, meals, baggage, assistance services), PDF itinerary/receipt and QR-coded boarding pass generation, and DCS (Departure Control System) check-in simulation. It also includes a student portal for viewing assigned activities and grades, an instructor portal for creating sections and grading activities, and an admin panel for flight operations, asset management, and dynamic pricing configuration.',
+      architecture: {
+        hardware: 'Not hardware-based; the system runs as a browser-based web application accessible to students, instructors, and administrators through desktop and mobile browsers.',
+        backend: 'Built with Django 6.0 and Django REST Framework 3.16.1, backed by PostgreSQL 16. Authentication is handled by Djoser 2.3.3. An XGBoost model trained on historical flight data powers base fare prediction with a dynamic pricing engine using multipliers for demand, time, occupancy, loyalty, and randomization. ReportLab 4.4.9 generates PDF itineraries/receipts and QR-coded boarding passes. PayMongo handles payment processing. Bulk CSV import is supported for fleet, operations, and ancillaries.',
+        frontend: 'Built with Vue 3 Composition API, Vite 7.3.0, Pinia 3.0.4 for state management, and Tailwind CSS 4.1.18 for styling. Axios 1.13.2 handles API communication, Chart.js 4.5.1 powers dashboard analytics, and Leaflet 1.9.4 provides interactive maps. The interface includes dedicated views for the booking flow, student dashboard, instructor portal, admin panels, and DCS check-in system.'
+      },
+      enhancements: [
+        'AI Chatbot: Integrate a conversational assistant to help students navigate the booking process and answer common questions.',
+        'Mobile App: Develop a companion mobile application for iOS and Android to allow booking and check-in on the go.',
+        'Real-Time Notifications: Add WebSocket-based live updates for booking confirmations, check-in reminders, and grade notifications.',
+        'Multi-Currency Support: Extend the payment system to support multiple currencies for international flight simulations.'
+      ]
+    }
   }
 ]
 
@@ -679,7 +705,7 @@ onMounted(async () => {
 
       <div class="modal-body" style="padding: 0;">
         <div style="width: 100%; height: 70vh; border: 3px solid var(--black);">
-          <iframe src="/documents/resume.pdf" style="width: 100%; height: 100%; border: none;" title="Resume"></iframe>
+          <embed src="/documents/resume.pdf#toolbar=0&navpanes=0&scrollbar=0" style="width: 100%; height: 100%;" type="application/pdf">
         </div>
       </div>
 
