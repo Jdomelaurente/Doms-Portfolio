@@ -144,6 +144,7 @@ const unifiedWorks = [
     tech: ['Django 6.0', 'DRF', 'Vue 3', 'PostgreSQL', 'XGBoost', 'Tailwind CSS', 'PayMongo', 'Djoser', 'ReportLab'],
     links: { demo: 'https://flight-booking-django.vercel.app/', code: '#' },
     isSchoolProject: true,
+    badge: 'CAPSTONE',
     details: {
       subtitle: 'A Capstone Flight Booking Simulation Platform for CTHM-CSUCC',
       overview: 'Flight Booking Simulation Platform (FBS) is a comprehensive smart flight booking simulation platform designed for CTHM-CSUCC (College of Tourism and Hospitality Management). This interactive training tool simulates a real-world airline booking system where students search flights, book tickets, select seats, and check in — all as part of graded academic activities. The platform features a multi-step booking wizard (Search → Passengers → Add-ons → Seats → Review → Payment), interactive seat maps with real-time availability, add-on selection (insurance, meals, baggage, assistance services), PDF itinerary/receipt and QR-coded boarding pass generation, and DCS (Departure Control System) check-in simulation. It also includes a student portal for viewing assigned activities and grades, an instructor portal for creating sections and grading activities, and an admin panel for flight operations, asset management, and dynamic pricing configuration.',
